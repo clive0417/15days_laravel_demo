@@ -34,5 +34,5 @@ Route::get('/posts', function () {
 });
 
 Route::get('/posts/{id}', function ($id) {
-    return view('post.list');
+    return view('posts.show');
 });

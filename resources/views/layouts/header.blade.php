@@ -10,9 +10,9 @@
                         <!--logo start-->
                         <a href="/" class="logo-brand">
                             @isset($overlay)
-                            <img class="retina" src="assets/img/logo-dark.png" alt="Massive">
+                            <img class="retina" src="/assets/img/logo-dark.png" alt="Massive">
                             @else
-                            <img class="retina" src="assets/img/logo.png" alt="Massive">
+                            <img class="retina" src="/assets/img/logo.png" alt="Massive">
                             @endisset
                             
                         </a>
