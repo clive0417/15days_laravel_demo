@@ -27,6 +27,9 @@
                             <li class="@if(request()->is('about')) active @endif"><a href="/about">about</a>
 
                             </li>
+                            <li class="@if(request()->is('posts')) active @endif"><a href="/posts">blog</a>
+
+                            </li>
                             <li class="@if(request()->is('contact')) active @endif"><a href="/contact">contact</a>
 
                             </li>

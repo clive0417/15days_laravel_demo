@@ -8,9 +8,9 @@
                     <div class="col-md-12">
                         <h4 class="text-uppercase">Blog Single</h4>
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a>
+                            <li><a href="/">Home</a>
                             </li>
-                            <li class="active"><a href="#">Blog</a>
+                            <li class="active"><a href="/posts">Blog</a>
                             </li>
                             <li class="active">Blog Single</li>
                         </ol>
