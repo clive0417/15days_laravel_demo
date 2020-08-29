@@ -30,7 +30,7 @@ Route::get('/contact', function () {
 });
 
 Route::get('/posts', function () {
-    return view('post.list');
+    return view('posts.list');
 });
 
 Route::get('/posts/{id}', function ($id) {
