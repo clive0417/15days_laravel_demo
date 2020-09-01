@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreatePostsTable extends Migration
 {
     /**
-     * Run the migrations. 要做甚麼事
+     * Run the migrations.
      *
      * @return void
      */
@@ -15,19 +15,29 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->text('content');
             $table->timestamps();
+
+            /*建立Foreign key */
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations.不做要如何返回上一布
+     * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
+        /*多處理table與table 之間的關係處理好 */
+        /*清除FK */
+        Schema::table('posts',function(Blueprint $table){
+            $table->dropForeigen(['user_id']);
+
+        });
         Schema::dropIfExists('posts');
     }
 }
