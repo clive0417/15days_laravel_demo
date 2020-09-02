@@ -29,11 +29,31 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/posts', function () {
-    $posts = [1,2,3,4,5];
-    return view('posts.list', ['posts'=> $posts]);
-});
+//Route::get('/posts', function () {
+    //$posts = [1,2,3,4,5];
+    //return view('posts.list', ['posts'=> $posts]);
+//});
 
-Route::get('/posts/{id}', function ($id) {
-    return view('posts.show');
-});
+//Route::get('/posts/{id}', function ($id) {
+    //return view('posts.show');
+//});
+
+//CRUD 
+// 3Routing :create/edit/list
+
+//C create controller 的儲存操作
+Route::post('/posts','PostController@store');
+//R read controller 的儲存操作 。{post}指的是post 的model 最後會疊代成數字@後面為method 的名子 只要兩邊對應就可以
+Route::get('/posts/{post}','PostController@show');
+//U 
+Route::put('/posts/{post}','PostController@update');
+//D
+Route::delete('/posts/{post}','PostController@destroy');
+
+//create 表單
+Route::get('/posts/create','PostController@create');
+//edit form
+Route::get('/posts/{post}/edit}','PostController@edit');
+//list
+Route::get('/posts','PostController@index');
+
