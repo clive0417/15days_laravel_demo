@@ -22,7 +22,11 @@ class PostController extends Controller
 
     public function store(Request $request) // 用request 來承接create 所寫的資料 
     {
-        //
+        $post = new Post;
+        $post->fill($request);
+        $post->save();
+        //redirect to index
+        return redirect('/posts'); 
 
     } 
 }

@@ -21,6 +21,25 @@
 @endsection
 
 @section('content')
-form
+<div class="page-content">
+    <div class="container">
+        <form method="post" action="/posts">
+            <!--@csrf 塞 session token 去跨過csrf -->
+            @csrf
+            <div class="form-group">
+                <label>Title</label>
+                <input  name="title" class="form-control"  placeholder="title">
+            </div>
+            <div class="form-group">
+                <label >Content</label>
+                <textarea name="content" class="form-control" cols="80" rows="8"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
 @endsection
             
