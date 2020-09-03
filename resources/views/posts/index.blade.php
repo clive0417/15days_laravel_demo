@@ -38,7 +38,7 @@
                                 <div class="full-width">
                                     <img src="assets/img/post/p12.jpg" alt="" />
                                 </div>
-                                <h4 class="text-uppercase"><a href="/posts/9487">{{$post->title}}}</a></h4>
+                                <h4 class="text-uppercase"><a href="/posts/9487">{{$post->title}}</a></h4>
                                 <ul class="post-meta">
                                     <li><i class="fa fa-user"></i>posted by <a href="#">admin</a>
                                     </li>
@@ -47,7 +47,7 @@
                                     <li><i class="fa fa-comments"></i>  <a href="#">4 comments</a>
                                     </li>
                                 </ul>
-                                <p>{{str_limit($post->content, 250)}}</p>
+                                <p>{{$post->content}}</p>
                                 <!--revirse link of single page-->
                                 <a href="/posts/9487" class="btn btn-small btn-dark-solid  "> Continue Reading</a>
                             </div>
