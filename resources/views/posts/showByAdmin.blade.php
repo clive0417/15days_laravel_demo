@@ -6,12 +6,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="text-uppercase">Blog Admin table</h4>
+                        <h4 class="text-uppercase">Blog Single</h4>
                         <ol class="breadcrumb">
                             <li><a href="/">Home</a>
                             </li>
-
-                            <li class="active">Blog Admin table</li>
+                            <li class="active"><a href="/posts/admin">Blog Admin Panel</a>
+                            </li>
+                            <li class="active">Blog Single</li>
                         </ol>
                     </div>
                 </div>
@@ -21,24 +22,18 @@
 
 @section('content')
 <section class="body-content ">
-
     <div class="page-content">
         <div class="container">
-            <div class="clearfix toolbox">
-            <a href="/posts/create" class="btn btn-default-primary pull-right">create post</a>
-            </div>
-            
-            <div class="list-group">
-                @foreach ($posts as $key=>$post)
-                    <a href="/posts/show/{{$post->id}}" class="list-group-item">{{$post->title}}</a>    
-                @endforeach
-
+            <!--title/content-->
+            <h1>{{$post->title}}</h1>
+            <div class="content">
+            {{$post->content}}
             </div>
 
-    </div>
-    </div>
 
+        </div>
+    </div>
+</section
 
-</section>
 @endsection
             

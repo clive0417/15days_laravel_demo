@@ -45,6 +45,8 @@ Route::get('/contact', function () {
 Route::post('/posts','PostController@store');
 //管理者頁面
 Route::get('/posts/admin','PostController@admin');
+//1 add read routing 
+Route::get('/posts/show/{post}','PostController@show');
 
 //create 表單
 Route::get('/posts/create','PostController@create');

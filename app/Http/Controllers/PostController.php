@@ -37,4 +37,10 @@ class PostController extends Controller
         return view('posts.admin',['posts'=>$posts]);
 
     }
+
+    public function show(Post $post)
+    {
+        return view('posts.showByAdmin',['post'=>$post]);
+
+    }
 }
