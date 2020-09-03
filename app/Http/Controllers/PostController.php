@@ -30,4 +30,11 @@ class PostController extends Controller
         return redirect('/posts'); 
 
     } 
+
+    public function admin() 
+    {
+        $posts = Post::all();
+        return view('posts.admin',['posts'=>$posts]);
+
+    }
 }

@@ -10,9 +10,9 @@
                         <ol class="breadcrumb">
                             <li><a href="/">Home</a>
                             </li>
-                            <li class="active"><a href="/posts">Blog</a>
+                            <li class="active"><a href="/posts/admin">Blog Admin table</a>
                             </li>
-                            <li class="active">Blog Listing</li>
+                            <li class="active">Create Post<</li>
                         </ol>
                     </div>
                 </div>
@@ -36,6 +36,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-default" onclick="window.history.back()">cancel</button>
         </form>
     </div>
 </div>

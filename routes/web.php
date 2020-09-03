@@ -43,6 +43,8 @@ Route::get('/contact', function () {
 
 //C create controller 的儲存操作
 Route::post('/posts','PostController@store');
+//管理者頁面
+Route::get('/posts/admin','PostController@admin');
 
 //create 表單
 Route::get('/posts/create','PostController@create');
