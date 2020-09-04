@@ -32,9 +32,9 @@
                             <div class="full-width">
                                 <img src="/assets/img/post/p12.jpg" alt="" />
                             </div>
-                            <h4 class="text-uppercase"><a href="blog-single.html">aaa</a></h4>
+                            <h4 class="text-uppercase"><a href="blog-single.html">{{$post->title}}</a></h4>
                             <ul class="post-meta">
-                                <li><i class="fa fa-user"></i>posted by <a href="#">aaa</a>
+                                <li><i class="fa fa-user"></i>posted by <a href="#">{{$post->user->name}}</a>
                                 </li>
                                 <li><i class="fa fa-folder-open"></i>  <a href="#">lifestyle</a>, <a href="#">travel</a>, <a href="#">fashion</a>
                                 </li>
@@ -42,7 +42,7 @@
                                 </li>
                             </ul>
 
-                            <p>aaa</p>
+                            <p>{{$post->content}}</p>
 
 
                             <div class="blog-post">

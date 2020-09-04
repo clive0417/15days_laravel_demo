@@ -48,7 +48,7 @@ class PostController extends Controller
         if(Auth::check()) {
             return view('posts.showByAdmin',['post'=>$post]);
         }else {
-            return view('posts.show');
+            return view('posts.show',['post'=>$post]);
 
         }
         
