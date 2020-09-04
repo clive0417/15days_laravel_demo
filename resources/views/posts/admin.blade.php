@@ -1,5 +1,5 @@
 <!--layouts. 的 . 代表資料夾-->
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('page_title')
 <section class="page-title">

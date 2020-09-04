@@ -1,5 +1,5 @@
 <!--layouts. 的 . 代表資料夾-->
-@extends('layouts.app',['overlay'=>true])
+@extends('layouts.frontend',['overlay'=>true])
 
 @section('hero')
         <div class="banner-state vertical-align text-center banner-13">
