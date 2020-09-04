@@ -45,7 +45,13 @@ class PostController extends Controller
     //Post 代表POSt model
     public function show(Post $post) 
     {
-        return view('posts.showByAdmin',['post'=>$post]);
+        if(Auth::check()) {
+            return view('posts.showByAdmin',['post'=>$post]);
+        }else {
+            return view('posts.show');
+
+        }
+        
 
     }
     public function edit(Post $post) 
