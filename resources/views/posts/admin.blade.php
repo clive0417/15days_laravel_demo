@@ -31,12 +31,19 @@
             <ul class="list-group">
                 @foreach ($posts as $key=>$post)
                     <li  class="list-group-item clearfix">
-                    {{$post->title}}
-                    <span class="pull-right">
-                        <a href="/posts/show/{{$post->id}}"class="btn btn-primary">View</a>
-                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
-                        <button class="btn btn-danger" onclick="deletePost({{$post->id}})">Delete</button>
-                    </span>
+                        <div class="pull-left">
+                            <div class="title">{{$post->title}}</div>
+                            <small class="author">{{$post->user->name}}</small>
+                            <!--wait update<small class="author">{{$post->user->name}}</small>-->
+
+                        </div>
+
+
+                        <span class="pull-right">
+                            <a href="/posts/show/{{$post->id}}"class="btn btn-primary">View</a>
+                            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
+                            <button class="btn btn-danger" onclick="deletePost({{$post->id}})">Delete</button>
+                        </span>
                     </li>    
                 @endforeach
 

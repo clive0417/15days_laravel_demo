@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class PostController extends Controller
@@ -20,11 +22,13 @@ class PostController extends Controller
 
     } 
 
+    // create method
     public function store(Request $request) // 用request 來承接create 所寫的資料 
     {
         $post = new Post;
         //->all 轉成array
         $post->fill($request->all());
+        $post->user_id =Auth::id();
         $post->save();
         //redirect to index
         return redirect('/posts/admin'); 
