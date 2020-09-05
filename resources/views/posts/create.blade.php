@@ -23,32 +23,8 @@
 @section('content')
 <div class="page-content">
     <div class="container">
-        @if ($errors->any()) 
-            <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $key => $error) 
-                    <li>{{$error}}</li>
+    @include('posts._form')
 
-                
-                @endforeach
-            </ul>
-            </div>
-        @endif
-        <form method="post" action="/posts">
-            <!--@csrf 塞 session token 去跨過csrf -->
-            @csrf
-            <div class="form-group">
-                <label>Title</label>
-                <input  name="title" class="form-control"  placeholder="title">
-            </div>
-            <div class="form-group">
-                <label >Content</label>
-                <textarea name="content" class="form-control" cols="80" rows="8"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-default" onclick="window.history.back()">cancel</button>
-        </form>
     </div>
 </div>
 
