@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Http\Requests\StoreBlogPost;
 
 class PostController extends Controller
 {
@@ -23,8 +24,9 @@ class PostController extends Controller
     } 
 
     // create method
-    public function store(Request $request) // 用request 來承接create 所寫的資料 
+    public function store(StoreBlogPost $request) // 用request 來承接create 所寫的資料 
     {
+
         $post = new Post;
         //->all 轉成array
         $post->fill($request->all());
@@ -61,9 +63,12 @@ class PostController extends Controller
 
     }
 
-    public function update(Request $request,Post $post) 
+    public function update(StoreBlogPost $request,Post $post) 
           // request 寫在第一個在
     {     //['post'=>$post] 代表將資料傳入
+
+            
+
         $post->fill($request->all());//將request 的資料帶入，$post 變數中
         $post->save();//資料存到資料庫
         return redirect('/posts/admin'); 
