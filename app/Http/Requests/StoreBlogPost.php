@@ -16,6 +16,10 @@ class StoreBlogPost extends FormRequest
     public function authorize()
     {
         $post = request()->post;/*$post 變數等於 request 傳來資訊 就是文章 */
+        if(!isset($post)) {
+            return true;
+        }
+
         if($post->user_id === Auth::id()) {/*post 文章的user id 是不是全等於 登入者(Auth)的id*/
             return true;
 
