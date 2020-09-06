@@ -61,6 +61,7 @@ Route::put('/posts/{post}','PostController@update')->middleware('auth');
 //D
 Route::delete('/posts/{post}','PostController@destroy')->middleware('auth');
 
+Route::resource('categories','CategoryController')->except(['show']);
 
 //for everyone 
 //list
