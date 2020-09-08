@@ -60,10 +60,11 @@ class PostController extends Controller
     //Post 代表POSt model
     public function show(Post $post) 
     {
+        $categories= Category::all();
         if(Auth::check()) {
-            return view('posts.showByAdmin',['post'=>$post]);
+            return view('posts.showByAdmin',['post'=>$post,'categories'=>$categories]);
         }else {
-            return view('posts.show',['post'=>$post]);
+            return view('posts.show',['post'=>$post,'categories'=>$categories]);
 
         }
         
