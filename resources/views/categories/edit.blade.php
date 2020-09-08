@@ -1,18 +1,18 @@
 <!--layouts. 的 . 代表資料夾-->
-@extends('layouts.frontend')
+@extends('layouts.app')
 
 @section('page_title')
 <section class="page-title">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="text-uppercase">Edit Post</h4>
+                        <h4 class="text-uppercase">Edit category</h4>
                         <ol class="breadcrumb">
-                            <li><a href="/">Home</a>
+                            <li class="breadcrumb-item"><a href="/">Home</a>
                             </li>
-                            <li class="active"><a href="/posts/admin">Blog Admin table</a>
+                            <li class="breadcrumb-item"><a href="/categories">Blog Admin table</a>
                             </li>
-                            <li class="active">Edit Post<</li>
+                            <li class="breadcrumb-item active">Edit category</li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
 @section('content')
 <div class="page-content">
     <div class="container">
-        @include('posts._form')
+        @include('categories._form')
  
     </div>
 </div>

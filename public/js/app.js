@@ -49759,7 +49759,7 @@ deletePost = function deletePost(id) {
     $.post(actionUrl, {
       _method: 'delete'
     }).done(function () {
-      console.log('test');
+      //console.log('test');
       location.href = '/posts/admin'; //重新整理頁面 
     });
   }
@@ -49771,14 +49771,14 @@ deleteCategory = function deleteCategory(id) {
   var result = confirm('Do you want to delete Category?'); //console.log(result); 驗證result 帶入0,1 OK
 
   if (result) {
-    var actionUrl = '/Categories/' + id; //組合網址
+    var actionUrl = '/categories/' + id; //組合網址
     //console.log(actionurl);位置驗證OK
 
     $.post(actionUrl, {
       _method: 'delete'
     }).done(function () {
       console.log('test');
-      location.href = '/Categoriess/admin'; //重新整理頁面 
+      location.href = '/categories'; //重新整理頁面 
     });
   }
 
