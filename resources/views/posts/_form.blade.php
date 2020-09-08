@@ -27,6 +27,17 @@
                 <input  name="title" class="form-control"  placeholder="title" value="{{$post->title}}">
             </div>
             <div class="form-group">
+                <label >Category</label>
+                <select class="form-control" name="category_id">
+                    <option selected value>Please select a category</option>
+                    @foreach ($categories as $key => $category)
+                        <option value="{{$category->id}}" @if($post->category_id==$category->id) selected @endif>{{$category->name}}</option>
+                    @endforeach
+
+
+                </select>       
+            </div>
+            <div class="form-group">
                 <label >Content</label>
                 <textarea name="content" class="form-control" cols="80" rows="8" >{{$post->content}}</textarea>
             </div>

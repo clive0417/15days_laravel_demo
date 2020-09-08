@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Http\Requests\StoreBlogPost;
+use App\Category;
+use App\Http\Requests\StoreCategory;
 
 class PostController extends Controller
 {
@@ -20,7 +22,8 @@ class PostController extends Controller
     public function create() 
     {
         $post = new Post;
-        return view('posts.create',['post'=>$post]);
+        $categories = Category::all();
+        return view('posts.create',['post'=>$post,'categories'=>$categories]);
 
     } 
 
@@ -59,7 +62,8 @@ class PostController extends Controller
     }
     public function edit(Post $post) 
     {     //['post'=>$post] 代表將資料傳入
-        return view('posts.edit',['post'=>$post]);
+        $categories = Category::all();
+        return view('posts.edit',['post'=>$post,'categories'=>$categories]);
 
 
     }
