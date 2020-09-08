@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories= Category::all(); // 將資料庫資料帶入
-        return view('category.index',[categories=>$categories])
+        return view('categories.index',['categories'=>$categories]);
     }
 
     /**
@@ -25,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category =new Category;/*變數等於model*/
+        return View('categories.create',['category'=>$category]);
     }
 
     /**
@@ -36,7 +37,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;/*變數等於model*/
+        $category ->fill($request->all());/*將request  提到的相關資料帶入*/
+        $category->save();
+
+        return redirect('/categories');
     }
 
 

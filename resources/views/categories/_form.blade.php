@@ -1,6 +1,6 @@
 @php
     $isCreate = request()->is('*create');
-    $actionUrl = ($isCreate)? '/posts' :'/posts/'.$post->id;
+    $actionUrl = ($isCreate)? '/categories' :'/categories/'.$category->id;
 @endphp       
         @if ($errors->any())    
             <div class="alert alert-danger">
@@ -23,13 +23,11 @@
             @endif
 
             <div class="form-group">
-                <label>Title</label>
-                <input  name="title" class="form-control"  placeholder="title" value="{{$post->title}}">
+                <label>Name</label>
+                <input  name="name" class="form-control"  value="{{$category->name}}">
             </div>
             <div class="form-group">
-                <label >Content</label>
-                <textarea name="content" class="form-control" cols="80" rows="8" >{{$post->content}}</textarea>
-            </div>
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-default" onclick="window.history.back()">cancel</button>

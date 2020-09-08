@@ -1,5 +1,5 @@
 <!--layouts. 的 . 代表資料夾-->
-@extends('layouts.frontend')
+@extends('layouts.app')
 
 @section('page_title')
 <section class="page-title">
@@ -32,16 +32,16 @@
                 @foreach ($categories as $key=>$category)
                     <li  class="list-group-item clearfix">
                         <div class="pull-left">
-                            <div class="title">{{$category->name}</div>
+                            <div class="name">{{$category->name}}</div>
 
-                            <!--wait update<small class="author">{{$category->user->name}}</small>-->
+                          
 
                         </div>
 
 
                         <span class="pull-right">
-                            <a href="/categories/show/{{$category>id}}"class="btn btn-primary">View</a>
-                            <a href="/categories/{{$$category->id}}/edit" class="btn btn-primary">Edit</a>
+                            <a href="/categories/show/{{$category->id}}"class="btn btn-primary">View</a>
+                            <a href="/categories/{{$category->id}}/edit" class="btn btn-primary">Edit</a>
                             <button class="btn btn-danger" onclick="deleteCategory({{$category->id}})">Delete</button>
                         </span>
                     </li>    
