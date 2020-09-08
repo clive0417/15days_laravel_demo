@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/assets/css/shortcodes.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/default-theme.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/frontend.css">
 
     <!-- endinject -->
 
