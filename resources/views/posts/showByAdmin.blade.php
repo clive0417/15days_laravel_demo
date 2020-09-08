@@ -26,6 +26,9 @@
         <div class="container">
             <!--title/content-->
             <h1 class="mb-0">{{$post->title}}</h1>
+            @if(isset($post->category))
+            <small class="d-block text-muted">{{$post->category->name}}</small>
+            @endif 
             <small class="author">{{$post->user->name}}</small>
             
             <!--Wait update<small class="author">{{$post->user->name}}</small>-->

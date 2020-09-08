@@ -66,6 +66,8 @@ Route::resource('categories','CategoryController')->except(['show']);
 //for everyone 
 //list
 Route::get('/posts','PostController@index');
+Route::get('/posts/category/{category}','PostController@indexWithCategory');
+
 //R read controller 的儲存操作 。{post}指的是post 的model 最後會疊代成數字@後面為method 的名子 只要兩邊對應就可以
 Route::get('/posts/{post}','PostController@show');
 //Update 跟資料庫互動

@@ -6,7 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="text-uppercase">Blog Listing</h4>
+                        <h4 class="text-uppercase">
+                        Blog Listing
+                            @if(request()->category)
+                                / {{request()->category->name}}
+                            @endif
+                        </h4>
                         <ol class="breadcrumb">
                             <li><a href="/">Home</a>
                             </li>
@@ -28,7 +33,7 @@
             <div class="row">
                 <div class="col-md-8">
                     @foreach ($posts as $key=> $post)
-                <!--classic image post-->
+                     <!--classic image post-->
                     <div class="blog-classic">
                             <div class="date">
                                 24
@@ -36,7 +41,7 @@
                             </div>
                             <div class="blog-post">
                                 <div class="full-width">
-                                    <img src="assets/img/post/p12.jpg" alt="" />
+                                    <img src="/assets/img/post/p12.jpg" alt="" />
                                 </div>
                                 <h4 class="text-uppercase"><a href="/posts/9487">{{$post->title}}</a></h4>
                                 <ul class="post-meta">
@@ -52,7 +57,7 @@
                                 <a href="/posts/{{ $post->id}}}" class="btn btn-small btn-dark-solid  "> Continue Reading</a>
                             </div>
                     </div>
-                <!--classic image post-->
+                                <!--classic image post-->
 
                     @endforeach
 
@@ -84,32 +89,9 @@
                 </div>
                 <div class="col-md-4">
 
-                    <!--search widget-->
-                    <div class="widget">
-                        <form class="form-inline form" role="form">
-                            <div class="search-row">
-                                <button class="search-btn" type="submit" title="Search">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <input type="text" class="form-control" placeholder="Search...">
-                            </div>
-                        </form>
-                    </div>
-                    <!--search widget-->
 
-                    <!--author widget-->
-                    <div class="widget">
-                        <div class="heading-title-alt text-left heading-border-bottom">
-                            <h6 class="text-uppercase">about author</h6>
-                        </div>
-                        <div class="full-width avatar">
-                            <img src="assets/img/post/avatar.jpg" alt="" />
-                        </div>
-                        <p>Persuaded to return to the shoemaker's shop, young Edward struggled on till three years of his wretched apprenticeship had passed over.</p>
 
-                        <span class="">- Nelson Leonard</span>
-                    </div>
-                    <!--author widget-->
+
 
                     <!--latest post widget-->
                     <div class="widget">
@@ -120,7 +102,7 @@
                             <li>
                                 <div class="thumb">
                                     <a href="#">
-                                        <img src="assets/img/post/post-thumb.jpg" alt="" />
+                                        <img src="/assets/img/post/post-thumb.jpg" alt="" />
                                     </a>
                                 </div>
                                 <div class="w-desk">
@@ -131,7 +113,7 @@
                             <li>
                                 <div class="thumb">
                                     <a href="#">
-                                        <img src="assets/img/post/post-thumb-2.jpg" alt="" />
+                                        <img src="/assets/img/post/post-thumb-2.jpg" alt="" />
                                     </a>
                                 </div>
                                 <div class="w-desk">
@@ -142,7 +124,7 @@
                             <li>
                                 <div class="thumb">
                                     <a href="#">
-                                        <img src="assets/img/post/post-thumb-3.jpg" alt="" />
+                                        <img src="/assets/img/post/post-thumb-3.jpg" alt="" />
                                     </a>
                                 </div>
                                 <div class="w-desk">
@@ -154,20 +136,7 @@
                     </div>
                     <!--latest post widget-->
 
-                    <!--follow us widget-->
-                    <div class="widget">
-                        <div class="heading-title-alt text-left heading-border-bottom">
-                            <h6 class="text-uppercase">follow us</h6>
-                        </div>
-                        <div class="widget-social-link circle">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                        </div>
-                    </div>
-                    <!--follow us widget-->
+
 
                     <!--category widget-->
                     <div class="widget">
@@ -175,16 +144,9 @@
                             <h6 class="text-uppercase">category</h6>
                         </div>
                         <ul class="widget-category">
-                            <li><a href="#">Animals</a>
-                            </li>
-                            <li><a href="#">Landscape</a>
-                            </li>
-                            <li><a href="#">Portrait</a>
-                            </li>
-                            <li><a href="#">Wild Life</a>
-                            </li>
-                            <li><a href="#">Video</a>
-                            </li>
+                            @foreach ($categories as $key =>$category)
+                                <li><a href="/posts/category/{{$category->id}}">{{$category->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <!--category widget-->

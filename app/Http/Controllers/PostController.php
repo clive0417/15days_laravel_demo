@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index() 
     {
         $posts = Post::all();
-        return view('posts.index',['posts'=>$posts]);
+        $categories =Category::all();
+        return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
 
     }
 
@@ -45,6 +46,14 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view('posts.admin',['posts'=>$posts]);
+
+    }
+    public function indexWithCategory(Category $category) 
+    {
+        $posts= Post::where('category_id',$category->id)->get();
+        $categories= Category::all();
+        return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
+
 
     }
 
