@@ -32,5 +32,5 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-default" onclick="window.history.back()">cancel</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">cancel</button>
         </form>

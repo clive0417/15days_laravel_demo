@@ -10904,3 +10904,8 @@ a.text-dark:focus {
   }
 }
 
+.toolbox {
+  margin-bottom: 10px;
+  text-align: right;
+}
+
