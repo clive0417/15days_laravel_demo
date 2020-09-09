@@ -24,4 +24,13 @@ class Post extends Model
         return $this->belongsToMany('App\Tag'); //()內為上述的檔案位置
 
     }
+    public function tagsString() // table之間的關係
+    {
+        $tagName= [];
+        foreach ($this->tags as $key =>$tag) {
+            $tagName[] = $tag->name;
+        } 
+        $tagsString = implode(',', $tagName);
+        return $tagsString;
+    }
 }

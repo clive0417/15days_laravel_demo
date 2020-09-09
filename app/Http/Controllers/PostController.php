@@ -43,13 +43,20 @@ class PostController extends Controller
         //TODO 
         // create /load tags
         $tags =explode(',',$request->tags);
+        $this->addTagsToPost($tags,$post);
+
+        //connent posts and tags
+        return redirect('/posts/admin');
+
+
+    } 
+
+    private function addTagsToPost($tags,$post) 
+    {
         foreach ($tags as $key=>$tag) {
             $model = Tag::firstOrCreate(['name'=> $tag]);
             $post->tags()->attach($model->id);
         }
-        //connent posts and tags
-        return redirect('/posts/admin');
-
 
     } 
 
@@ -97,6 +104,14 @@ class PostController extends Controller
 
         $post->fill($request->all());//將request 的資料帶入，$post 變數中
         $post->save();//資料存到資料庫
+        // remove old tags
+        $post->tags()->detach();
+        //foreach ($post->tags as $key =>$tag) {
+            //$post->tags()->detach($tag->id);
+        //}
+        //tag update
+        $tags =explode(',',$request->tags);
+        $this->addTagsToPost($tags,$post);
         return redirect('/posts/admin'); 
 
 
