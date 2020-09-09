@@ -18,4 +18,10 @@ class Post extends Model
         return $this->belongsTo('App\Category');
 
     }
+    public function tags() // table之間的關係
+    {
+        
+        return $this->belongsMany('App\Tag'); //()內為上述的檔案位置
+
+    }
 }
