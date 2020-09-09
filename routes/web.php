@@ -55,7 +55,7 @@ Route::get('/posts/{post}/edit','PostController@edit')->middleware('auth');
 //C create controller 的儲存操作
 Route::post('/posts','PostController@store')->middleware('auth');
 //1 add read routing 
-Route::get('/posts/show/{post}','PostController@show')->middleware('auth');
+Route::get('/posts/show/{post}','PostController@showByAdmin')->middleware('auth');
 
 Route::put('/posts/{post}','PostController@update')->middleware('auth');
 //D

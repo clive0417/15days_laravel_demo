@@ -79,15 +79,20 @@ class PostController extends Controller
     public function show(Post $post) 
     {
         $categories= Category::all();
-        if(Auth::check()) {
-            return view('posts.showByAdmin',['post'=>$post,'categories'=>$categories]);
-        }else {
-            return view('posts.show',['post'=>$post,'categories'=>$categories]);
+        return view('posts.show',['post'=>$post,'categories'=>$categories]);
 
-        }
         
 
     }
+
+    public function showByAdmin(Post $post) 
+    {
+        $categories= Category::all();
+        return view('posts.showByAdmin',['post'=>$post,'categories'=>$categories]);
+
+    }
+
+
     public function edit(Post $post) 
     {     //['post'=>$post] 代表將資料傳入
         $categories = Category::all();
