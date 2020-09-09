@@ -17,7 +17,8 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $categories =Category::all();
-        return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
+        $tags =Tag::all();
+        return view('posts.index',['posts'=>$posts,'categories'=>$categories,'tags'=>$tags]);
 
     }
 
@@ -75,11 +76,23 @@ class PostController extends Controller
 
     }
 
+    //tag split show 
+    public function indexWithTag(Tag $tag) 
+    {
+
+
+        $posts = $tag->posts;
+
+        return view('posts.index',['posts'=>$posts]);
+
+
+    }
+
     //Post 代表POSt model
     public function show(Post $post) 
     {
-        $categories= Category::all();
-        return view('posts.show',['post'=>$post,'categories'=>$categories]);
+
+        return view('posts.show',['post'=>$post]);
 
         
 
@@ -87,8 +100,8 @@ class PostController extends Controller
 
     public function showByAdmin(Post $post) 
     {
-        $categories= Category::all();
-        return view('posts.showByAdmin',['post'=>$post,'categories'=>$categories]);
+
+        return view('posts.showByAdmin',['post'=>$post]);
 
     }
 

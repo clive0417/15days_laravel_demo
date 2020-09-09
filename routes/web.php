@@ -67,7 +67,10 @@ Route::resource('tags','TagController')->only(['index','destory'])->middleware('
 //for everyone 
 //list
 Route::get('/posts','PostController@index');
+// show by category 分類
 Route::get('/posts/category/{category}','PostController@indexWithCategory');
+// show by tag 分類
+Route::get('/posts/tag/{tag}','PostController@indexWithTag');
 
 //R read controller 的儲存操作 。{post}指的是post 的model 最後會疊代成數字@後面為method 的名子 只要兩邊對應就可以
 Route::get('/posts/{post}','PostController@show');

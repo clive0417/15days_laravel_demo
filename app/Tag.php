@@ -10,7 +10,7 @@ class Tag extends Model
     public function posts() // table之間的關係
     {
         
-        return $this->belongsMany('App\Post'); //()內為上述的檔案位置
+        return $this->belongsToMany('App\Post'); //()內為上述的檔案位置
 
     }
 }
