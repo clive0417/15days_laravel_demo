@@ -35,9 +35,9 @@ $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
-  });
+});
   //delete_post的function code
-  deletePost = function (id) {
+deletePost = function (id) {
     let result = confirm('Do you want to delete post?');
     //console.log(result); 驗證result 帶入0,1 OK
     
@@ -54,7 +54,7 @@ $.ajaxSetup({
 
     
 };
-  deleteCategory = function (id) {
+deleteCategory = function (id) {
     let result = confirm('Do you want to delete Category?');
     //console.log(result); 驗證result 帶入0,1 OK
     
@@ -62,8 +62,26 @@ $.ajaxSetup({
         let actionUrl ='/categories/'+id;//組合網址
         //console.log(actionurl);位置驗證OK
         $.post(actionUrl,{_method:'delete'}).done(function() {
-            console.log('test');
+            //console.log('test');
             location.href = '/categories';//重新整理頁面 
+
+        });
+
+    };
+
+    
+};
+
+deleteTag = function (id) {
+    let result = confirm('Do you want to delete Tag?');
+    //console.log(result); 驗證result 帶入0,1 OK
+    
+    if (result) {
+        let actionUrl ='/tags/'+id;//組合網址
+        //console.log(actionurl);位置驗證OK
+        $.post(actionUrl,{_method:'delete'}).done(function() {
+            //console.log('test');
+            location.href = '/tags';//重新整理頁面 
 
         });
 

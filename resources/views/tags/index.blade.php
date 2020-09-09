@@ -6,12 +6,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="text-uppercase">Category Admin table</h4>
+                        <h4 class="text-uppercase">Tag Admin table</h4>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Category Admin table</li>
+                            <li class="breadcrumb-item active">Tag  Admin table</li>
                         </ol>
                     </div>
                 </div>
@@ -24,15 +24,13 @@
 
     <div class="page-content">
         <div class="container">
-            <div class="toolbox">
-            <a href="/categories/create" class="btn btn-primary">create category</a>
-            </div>
+
             
             <ul class="list-group">
-                @foreach ($categories as $key=>$category)
+                @foreach ($tags as $key=>$tag)
                     <li  class="list-group-item clearfix">
                         <div class="float-left">
-                            <div class="name">{{$category->name}}</div>
+                            <div class="name">{{$tag->name}}</div>
 
                           
 
@@ -40,9 +38,7 @@
 
 
                         <span class="float-right">
-                            <a href="/categories/show/{{$category->id}}"class="btn btn-primary">View</a>
-                            <a href="/categories/{{$category->id}}/edit" class="btn btn-primary">Edit</a>
-                            <button class="btn btn-danger" onclick="deleteCategory({{$category->id}})">Delete</button>
+                            <button class="btn btn-danger" onclick="deleteTag({{$tag->id}})">Delete</button>
                         </span>
                     </li>    
                 @endforeach

@@ -49777,8 +49777,26 @@ deleteCategory = function deleteCategory(id) {
     $.post(actionUrl, {
       _method: 'delete'
     }).done(function () {
-      console.log('test');
+      //console.log('test');
       location.href = '/categories'; //重新整理頁面 
+    });
+  }
+
+  ;
+};
+
+deleteTag = function deleteTag(id) {
+  var result = confirm('Do you want to delete Tag?'); //console.log(result); 驗證result 帶入0,1 OK
+
+  if (result) {
+    var actionUrl = '/tags/' + id; //組合網址
+    //console.log(actionurl);位置驗證OK
+
+    $.post(actionUrl, {
+      _method: 'delete'
+    }).done(function () {
+      //console.log('test');
+      location.href = '/tags'; //重新整理頁面 
     });
   }
 
