@@ -29,6 +29,7 @@
             @if(isset($post->category))
             <small class="d-block text-muted">{{$post->category->name}}</small>
             @endif 
+            <small class="d-block text-muted">{{$post->tagsString() }}</small>
             <small class="author">{{$post->user->name}}</small>
             
             <!--Wait update<small class="author">{{$post->user->name}}</small>-->
