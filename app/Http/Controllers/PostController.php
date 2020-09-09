@@ -43,7 +43,7 @@ class PostController extends Controller
  
         //TODO 
         // create /load tags
-        $tags =explode(',',$request->tags);
+        $tags =$this->stringToTags($request->tags);
         $this->addTagsToPost($tags,$post);
 
         //connent posts and tags
@@ -51,6 +51,18 @@ class PostController extends Controller
 
 
     } 
+    private function stringToTags($string) 
+    {
+        $tags = explode(',',$string);
+        $tags = array_filter($tags);
+        foreach ($tags as $key=>$tag) {
+            $tag[$key]= trim($tag);
+        }
+        return $tags;
+
+
+
+    }
 
     private function addTagsToPost($tags,$post) 
     {
@@ -128,8 +140,9 @@ class PostController extends Controller
             //$post->tags()->detach($tag->id);
         //}
         //tag update
-        $tags =explode(',',$request->tags);
+        $tags =$this->stringToTags($request->tags);
         $this->addTagsToPost($tags,$post);
+
         return redirect('/posts/admin'); 
 
 
