@@ -9,6 +9,7 @@ use App\Post;
 use App\Http\Requests\StoreBlogPost;
 use App\Category;
 use App\Http\Requests\StoreCategory;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -38,7 +39,17 @@ class PostController extends Controller
         $post->user_id =Auth::id();
         $post->save();
         //redirect to index
-        return redirect('/posts/admin'); 
+ 
+        //TODO 
+        // create /load tags
+        $tags =explode(',',$request->tags);
+        foreach ($tags as $key=>$tag) {
+            $model = Tag::firstOrCreate(['name'=> $tag]);
+            $post->tags()->attach($model->id);
+        }
+        //connent posts and tags
+        return redirect('/posts/admin');
+
 
     } 
 

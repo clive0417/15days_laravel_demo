@@ -33,9 +33,12 @@
                     @foreach ($categories as $key => $category)
                         <option value="{{$category->id}}" @if($post->category_id==$category->id) selected @endif>{{$category->name}}</option>
                     @endforeach
-
-
                 </select>       
+            </div>
+            <div class="form-group">
+                <label >Tags</label>
+                <input type="text" name="tags" class="form-control"  value="">
+     
             </div>
             <div class="form-group">
                 <label >Content</label>

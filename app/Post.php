@@ -21,7 +21,7 @@ class Post extends Model
     public function tags() // table之間的關係
     {
         
-        return $this->belongsMany('App\Tag'); //()內為上述的檔案位置
+        return $this->belongsToMany('App\Tag'); //()內為上述的檔案位置
 
     }
 }
