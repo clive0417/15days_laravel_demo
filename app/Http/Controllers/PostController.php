@@ -33,15 +33,19 @@ class PostController extends Controller
     // create method
     public function store(StoreBlogPost $request) // 用request 來承接create 所寫的資料 
     {
-
-        $path = $request->file('thumbnail')->store('public');
-        $path = str_replace('public','/storage',$path);
-        //\Illuminate\Support\Facades\Log::info($path);
         $post = new Post;
-        //->all 轉成array
         $post->fill($request->all());
         $post->user_id =Auth::id();
-        $post->thumbnail = $path; //thunbnail變數等於$path 帶入
+        if(!is_null($request->file('thumbnail'))) {
+            $path = $request->file('thumbnail')->store('public');
+            $path = str_replace('public','/storage',$path);
+            $post->thumbnail = $path; 
+
+        }
+
+
+        //->all 轉成array
+//thunbnail變數等於$path 帶入
         $post->save();
         //redirect to index
  
@@ -134,9 +138,15 @@ class PostController extends Controller
           // request 寫在第一個在
     {     //['post'=>$post] 代表將資料傳入
 
-            
+        $post->fill($request->all());
+        if(!is_null($request->file('thumbnail'))) {
+            $path = $request->file('thumbnail')->store('public');
+            $path = str_replace('public','/storage',$path);
+            $post->thumbnail = $path; 
 
-        $post->fill($request->all());//將request 的資料帶入，$post 變數中
+        }
+        
+
         $post->save();//資料存到資料庫
         // remove old tags
         $post->tags()->detach();

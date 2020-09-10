@@ -27,7 +27,10 @@
                 <input  name="title" class="form-control"  placeholder="title" value="{{$post->title}}">
             </div>
             <div class="form-group">
-                <label>upload picture thumbnail</label>
+                <label class="d-block">upload picture thumbnail</label>
+                @if ($post->thumbnail)
+                    <img width="320px" src="{{$post->thumbnail}}" alt="thumbnail">
+                @endif
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile" name="thumbnail">
                     <label class="custom-file-label" for="customFile">Choose file</label>
