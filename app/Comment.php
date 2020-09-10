@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
+    protected $fillable = ['post_id','name','comment'];
     public function post() // table之間的關係
     {
         

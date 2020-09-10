@@ -76,6 +76,9 @@ Route::get('/posts/tag/{tag}','PostController@indexWithTag');
 Route::get('/posts/{post}','PostController@show');
 //Update 跟資料庫互動
 
+// for comment 
+Route::resource('comments','CommentController')->only(['store','update','destory']);
+
 
 Auth::routes();
 
