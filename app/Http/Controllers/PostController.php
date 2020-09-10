@@ -34,10 +34,14 @@ class PostController extends Controller
     public function store(StoreBlogPost $request) // 用request 來承接create 所寫的資料 
     {
 
+        $path = $request->file('thumbnail')->store('public');
+        $path = str_replace('public','/storage',$path);
+        //\Illuminate\Support\Facades\Log::info($path);
         $post = new Post;
         //->all 轉成array
         $post->fill($request->all());
         $post->user_id =Auth::id();
+        $post->thumbnail = $path; //thunbnail變數等於$path 帶入
         $post->save();
         //redirect to index
  

@@ -13,7 +13,7 @@
             </ul>
             </div>
         @endif
-        <form method="post" action="{{$actionUrl}}">
+        <form method="post" action="{{$actionUrl}}" enctype="multipart/form-data">
 
             <!--@csrf 塞 session token 去跨過csrf -->
             @csrf
@@ -26,6 +26,14 @@
                 <label>Title</label>
                 <input  name="title" class="form-control"  placeholder="title" value="{{$post->title}}">
             </div>
+            <div class="form-group">
+                <label>upload picture thumbnail</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="thumbnail">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label >Category</label>
                 <select class="form-control" name="category_id">

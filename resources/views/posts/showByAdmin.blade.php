@@ -38,6 +38,12 @@
                 <button class="btn btn-danger" onclick="deletePost({{$post->id}})">Delete</button>
             
             </div>
+            @if(!$post->thumbnail)
+                <div class="text-danger">no thumbnail</div>
+            @else
+            <img width="640" src="{{$post->thumbnail}}" alt="thumbnail">
+            @endif
+
             <div class="content">
             {{$post->content}}
             </div>
