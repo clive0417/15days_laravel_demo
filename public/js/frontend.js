@@ -12873,24 +12873,28 @@ $.ajaxSetup({
 });
 
 taggleCommentForm = function taggleCommentForm(e) {
-  console.log($(e.target));
-  /*$(e.target).closest('.comment-info').siblings('.comment-body').taggleClass('edit');*/
+  /*console.log('1',$(e.target));/*target and currentTget 抓到都是相同的東西 */
 
-  $(e.target).taggleClass('edit');
+  /*console.log('2',$(e.currentTarget));*/
+  $(e.target).closest('.comment-info').siblings('.comment-body').toggleClass('edit');
   /**/
 };
 
 deleteComment = function deleteComment(e) {
   var result = confirm('delete Comment?');
   var action = $(e.currentTarget).data('action');
-  var comment = $(e.currentTarget).closest('.media'); //console.log(action) sction 位置有帶成功然而
+  var comment = $(e.currentTarget).closest('.media');
+  var position = $(e.currentTarget); //console.log(action) sction 位置有帶成功然而
 
   if (result) {
-    ;
     $.post(action, {
       _method: 'delete'
     }).done(function (data) {
-      $(e.currentTarget).closest('.media').remove();
+      console.log("1");
+      console.log(e.currentTarget);
+      console.log(position); //e.currentTarget 抓不到值
+
+      $(position).closest('.media').remove();
     });
   }
   /*$(e.currentTarget).closest('.comment-info').siblings('.comment-body').taggleClass('edit');無法執行*/
@@ -12900,16 +12904,17 @@ deleteComment = function deleteComment(e) {
 };
 
 $('form.update-comment').submit(function (e) {
+  e.preventDefault(); // 阻止form 送出
+
   console.log("test-2");
-  e.preventDefault();
-  var comment = $(e.currentTarget).find('[name="comment"]').val();
-  var post_id = $(e.currentTarget).find('[name="post_id"]').val();
-  var name = $(e.currentTarget).find('[name="name"]').val();
+  var comment = $(e.currentTarget).find('[name="comment"]').val(); //let post_id=$(e.currentTarget).find('[name="post_id"]').val();
+  //let name=$(e.currentTarget).find('[name="name"]').val();
+
   $.post($(e.currentTarget).attr('action'), {
     _method: 'put',
     comment: comment
   }).done(function (data) {
-    $(e.currentTarget).closest('.comment-body').taggleClass('edit');
+    $(e.currentTarget).closest('.comment-body').toggleClass('edit');
     $(e.currentTarget).siblings('p').html(comment);
   });
 });

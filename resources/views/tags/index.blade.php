@@ -39,6 +39,7 @@
 
                         <span class="float-right">
                             <button class="btn btn-danger" onclick="deleteTag({{$tag->id}})">Delete</button>
+                            
                         </span>
                     </li>    
                 @endforeach

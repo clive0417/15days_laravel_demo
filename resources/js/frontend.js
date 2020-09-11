@@ -39,9 +39,10 @@ $.ajaxSetup({
 
   taggleCommentForm = function (e) {
   
-    console.log($(e.target));
-    /*$(e.target).closest('.comment-info').siblings('.comment-body').taggleClass('edit');*/
-    $(e.target).taggleClass('edit');
+    /*console.log('1',$(e.target));/*target and currentTget 抓到都是相同的東西 */
+    /*console.log('2',$(e.currentTarget));*/
+    $(e.target).closest('.comment-info').siblings('.comment-body').toggleClass('edit');
+
     /**/
 
   };
@@ -49,13 +50,17 @@ $.ajaxSetup({
     let result = confirm('delete Comment?');
     let action = $(e.currentTarget).data('action');
     let comment = $(e.currentTarget).closest('.media');
+    let position =  $(e.currentTarget);
     //console.log(action) sction 位置有帶成功然而
     if (result) {
-      ;
       $.post(action,{
         _method:'delete',
       }).done(function (data) {
-        $(e.currentTarget).closest('.media').remove();
+        console.log("1");
+        console.log(e.currentTarget);
+        console.log(position);
+        //e.currentTarget 抓不到值
+        $(position).closest('.media').remove();
       })
     }
 
@@ -66,21 +71,22 @@ $.ajaxSetup({
   };
 
   $('form.update-comment').submit(function (e) {
+    e.preventDefault();// 阻止form 送出
     console.log("test-2");
-    e.preventDefault();
+
     let comment =$(e.currentTarget).find('[name="comment"]').val();
-    let post_id=$(e.currentTarget).find('[name="post_id"]').val();
-    let name=$(e.currentTarget).find('[name="name"]').val();
+    //let post_id=$(e.currentTarget).find('[name="post_id"]').val();
+    //let name=$(e.currentTarget).find('[name="name"]').val();
 
     $.post($(e.currentTarget).attr('action'),{
       _method: 'put',
       comment:comment,
 
     }).done(function (data) {
-      $(e.currentTarget).closest('.comment-body').taggleClass('edit');
+      $(e.currentTarget).closest('.comment-body').toggleClass('edit');
       $(e.currentTarget).siblings('p').html(comment);
 
 
-    })
+    });
   });
 

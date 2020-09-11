@@ -61,7 +61,7 @@
                                     <li><i class="fa fa-comments"></i>  <a href="#">4 comments</a>
                                     </li>
                                 </ul>
-                                <p>{{$post->content}}</p>
+                                <p>{{ \Illuminate\Support\Str::limit($post->content, 50, '...') }}</p>
                                 <!--revirse link of single page-->
                                 <a href="/posts/{{ $post->id}}}" class="btn btn-small btn-dark-solid  "> Continue Reading</a>
                             </div>

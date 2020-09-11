@@ -127,8 +127,8 @@
                                                 <div class="comment-author">
                                                     <a href="#">{{$comment->name}}</a>
                                                         @if($comment->user && $comment->user->id==Auth::id())
-                                                        <button class="btn btn-secondary" onclick="taggleCommentForm(event)">edit</button>
-                                                        <button class="btn btn-secondary"onclick="deleteComment(event)" data-action="/comments/{{$comment->id}}">delete</button>                                                    
+                                                        <button class="btn btn-default" onclick="taggleCommentForm(event)">edit</button>
+                                                        <button class="btn btn-default"onclick="deleteComment(event)" data-action="/comments/{{$comment->id}}">delete</button>                                                    
                                                         @endif()
                                                 </div>
                                                 {{$comment->created_at->format('F d, Y G:i')}}
@@ -139,7 +139,7 @@
                                                 <p>
                                                     {{$comment->comment}}
                                                 </p>
-                                                <form name="update-comment"action="/comments/{{$comment->id}}" method="POST">
+                                                <form name="update-comment"action="/comments/{{$comment->id}}" method="post">
                                                 <input type="hidden" name="post_id" value="{{$comment->post->id}}">
                                                 <input type="hidden" name="name" value="{{$comment->name}}">
                                                 <input type="text"value="{{$comment->comment}}">
@@ -164,6 +164,17 @@
                             <div class="heading-title-alt text-left heading-border-bottom">
                                 <h4 class="text-uppercase">Leave a Comments</h4>
                             </div>
+                            @if ($errors->any())    
+                                <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $key => $error) 
+                                        <li>{{$error}}</li>
+
+                                    
+                                    @endforeach
+                                </ul>
+                                </div>
+                            @endif
 
                             <form method="post" action="/comments" id="form" role="form" class="blog-comments">
                                 @csrf
