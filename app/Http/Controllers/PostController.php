@@ -15,7 +15,7 @@ class PostController extends Controller
 {
     public function index() 
     {
-        $posts = Post::all();
+        $posts = Post::paginate(5);
         $categories =Category::all();
         $tags =Tag::all();
         return view('posts.index',['posts'=>$posts,'categories'=>$categories,'tags'=>$tags]);
