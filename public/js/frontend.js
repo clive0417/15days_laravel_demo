@@ -12872,7 +12872,7 @@ $.ajaxSetup({
   }
 });
 
-taggleCommentForm = function taggleCommentForm(e) {
+toggleCommentForm = function toggleCommentForm(e) {
   /*console.log('1',$(e.target));/*target and currentTget 抓到都是相同的東西 */
 
   /*console.log('2',$(e.currentTarget));*/
@@ -12906,7 +12906,8 @@ deleteComment = function deleteComment(e) {
 $('form.update-comment').submit(function (e) {
   e.preventDefault(); // 阻止form 送出
 
-  console.log("test-2");
+  console.log("test-2"); // 此console.log 無法顯示
+
   var comment = $(e.currentTarget).find('[name="comment"]').val(); //let post_id=$(e.currentTarget).find('[name="post_id"]').val();
   //let name=$(e.currentTarget).find('[name="name"]').val();
 
@@ -12914,6 +12915,7 @@ $('form.update-comment').submit(function (e) {
     _method: 'put',
     comment: comment
   }).done(function (data) {
+    console.log("test-3");
     $(e.currentTarget).closest('.comment-body').toggleClass('edit');
     $(e.currentTarget).siblings('p').html(comment);
   });
