@@ -135,15 +135,29 @@
 
                                             <div class="comment-info">
                                                 <div class="comment-author">
-                                                    <a href="#">{{$comment->user->name}}</a>
+                                                    <a href="#">{{$comment->name}}</a>
+                                                        @if($comment->user && $comment->user->id==Auth::id())
+                                                        <button class="btn btn-secondary" onclick="taggleCommentForm(event)">edit</button>
+                                                        <button class="btn btn-secondary"onclick="deleteComment(event)" data-action="/comments/{{$comment->id}}">delete</button>                                                    
+                                                        @endif()
                                                 </div>
                                                 {{$comment->created_at->format('F d, Y G:i')}}
 
                                             </div>
+                                            <div class="comment-body">
+                                                
+                                                <p>
+                                                    {{$comment->comment}}
+                                                </p>
+                                                <form name="update-comment"action="/comments/{{$comment->id}}" method="POST">
+                                                <input type="hidden" name="post_id" value="{{$comment->post->id}}">
+                                                <input type="hidden" name="name" value="{{$comment->name}}">
+                                                <input type="text"value="{{$comment->comment}}">
+                                                <button>update</button>
+                                                </form>
+                                            
+                                            </div>
 
-                                            <p>
-                                                {{$comment->comment}}
-                                            </p>
 
                                         </div>
 

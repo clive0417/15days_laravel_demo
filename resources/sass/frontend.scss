@@ -3,8 +3,22 @@
 // Variables
 @import 'variables';
 
+.comment-body {
+    form {
+        display: none;
+    }
+    
+    &.edit{
+        form {
+            display: block;
+        }
+        p {
+            display: none;
+
+        }
+    }
+
+}
 
 
-
-//
 

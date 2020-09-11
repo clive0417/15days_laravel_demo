@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SotreComment;
 
+
 class CommentController extends Controller
 {
 
@@ -41,7 +42,8 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->fill($request->all());
+        $comment->save();
     }
 
     /**
@@ -52,6 +54,6 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
     }
 }
