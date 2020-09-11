@@ -13,6 +13,28 @@ use App\Tag;
 
 class PostController extends Controller
 {
+    private function stringToTags($string) 
+    {
+        $tags = explode(',',$string);
+        $tags = array_filter($tags);
+        foreach ($tags as $key=>$tag) {
+            $tag[$key]= trim($tag);
+        }
+        return $tags;
+
+
+
+    }
+
+    private function addTagsToPost($tags,$post) 
+    {
+        foreach ($tags as $key=>$tag) {
+            $model = Tag::firstOrCreate(['name'=> $tag]);
+            $post->tags()->attach($model->id);
+        }
+
+    } 
+
     public function index() 
     {
         $posts = Post::paginate(5);
@@ -43,9 +65,6 @@ class PostController extends Controller
 
         }
 
-
-        //->all 轉成array
-//thunbnail變數等於$path 帶入
         $post->save();
         //redirect to index
  
@@ -57,27 +76,6 @@ class PostController extends Controller
         //connent posts and tags
         return redirect('/posts/admin');
 
-
-    } 
-    private function stringToTags($string) 
-    {
-        $tags = explode(',',$string);
-        $tags = array_filter($tags);
-        foreach ($tags as $key=>$tag) {
-            $tag[$key]= trim($tag);
-        }
-        return $tags;
-
-
-
-    }
-
-    private function addTagsToPost($tags,$post) 
-    {
-        foreach ($tags as $key=>$tag) {
-            $model = Tag::firstOrCreate(['name'=> $tag]);
-            $post->tags()->attach($model->id);
-        }
 
     } 
 
@@ -110,9 +108,11 @@ class PostController extends Controller
 
     //Post 代表POSt model
     public function show(Post $post) 
-    {
+    {   
+        $prevPost=Post::where('id','<',$post->id)->max('id');// 找小於現在id[$post->id] 的最大id
+        $nextPost=Post::where('id','>',$post->id)->min('id');;
 
-        return view('posts.show',['post'=>$post]);
+        return view('posts.show',['post'=>$post,'prevPost'=>$prevPost,'nextPost'=>$nextPost]);
 
         
 
