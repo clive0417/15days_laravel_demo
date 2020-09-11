@@ -1,9 +1,13 @@
 @php
 use App\Category;
 use App\Tag;
+use App\Post;
+use App\Comment;
 
 $categories= Category::all();
 $tags =Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
+$latesPosts = Post::orderBy('created_at','desc')->take(3)->get();
+$latesComments = Comment::orderBy('created_at','desc')->take(4)->get();
 
 @endphp
                     <!--latest post widget-->
@@ -12,39 +16,24 @@ $tags =Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get
                             <h6 class="text-uppercase">latest post</h6>
                         </div>
                         <ul class="widget-latest-post">
+                            @foreach($latesPosts as $key=>$post)
                             <li>
                                 <div class="thumb">
-                                    <a href="#">
-                                        <img src="/assets/img/post/post-thumb.jpg" alt="" />
+                                    <a href="/posts/{{$post->id}}">
+                                        @if($post->thumbnail)
+                                        <img src="{{$post->thumbnail}}" alt="thumbnail" />
+                                        @else
+                                        <img src="/assets/img/post/p12.jpg" alt="預設圖片" /><!--預設圖片-->
+                                        @endif
                                     </a>
                                 </div>
                                 <div class="w-desk">
-                                    <a href="#">Old Father Getup</a>
-                                    April 25, 2014
+                                    <a href="#">{{$post->title}}</a>
+                                    {{$post->created_at->format('F d, Y')}}
                                 </div>
                             </li>
-                            <li>
-                                <div class="thumb">
-                                    <a href="#">
-                                        <img src="/assets/img/post/post-thumb-2.jpg" alt="" />
-                                    </a>
-                                </div>
-                                <div class="w-desk">
-                                    <a href="#">Represent is the best way</a>
-                                    March 28, 2014
-                                </div>
-                            </li>
-                            <li>
-                                <div class="thumb">
-                                    <a href="#">
-                                        <img src="/assets/img/post/post-thumb-3.jpg" alt="" />
-                                    </a>
-                                </div>
-                                <div class="w-desk">
-                                    <a href="#">Alone with the music</a>
-                                    May 05, 2014
-                                </div>
-                            </li>
+                            @endforeach
+ 
                         </ul>
                     </div>
                     <!--latest post widget-->
@@ -70,14 +59,12 @@ $tags =Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get
                             <h6 class="text-uppercase">Latest comments </h6>
                         </div>
                         <ul class="widget-comments">
-                            <li>Jonathan on <a href="javascript:;">Vesti blulum quis dolor </a>
+                        @foreach ($latesComments as $key => $comment)
+                        <li>{{$comment->name}} on <a href="/posts/{{$comment->post->id}}">{{$comment->post->title}} </a>
                             </li>
-                            <li>Jane Doe on <a href="javascript:;">Nam sed arcu tellus</a>
-                            </li>
-                            <li>Margarita on <a href="javascript:;">Fringilla ut vel ipsum </a>
-                            </li>
-                            <li>Smith on <a href="javascript:;">Vesti blulum quis dolor sit</a>
-                            </li>
+                        @endforeach
+
+
                         </ul>
                     </div>
                     <!--comments widget-->
