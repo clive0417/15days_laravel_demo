@@ -144,6 +144,7 @@
                                                 <input type="hidden" name="name" value="{{$comment->name}}">
                                                 <input type="text" name="comment"value="{{$comment->comment}}">
                                                 <button>update</button>
+                                                <!--改成input submit 也是沒有用 input type="submit" value="update-2">-->
                                                 </form>
                                             
                                             </div>

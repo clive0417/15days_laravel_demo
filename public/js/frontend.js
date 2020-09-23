@@ -12903,6 +12903,7 @@ deleteComment = function deleteComment(e) {
 
 };
 
+console.log(e.currentTarget);
 $('form.update-comment').submit(function (e) {
   e.preventDefault(); // 阻止form 送出
 
