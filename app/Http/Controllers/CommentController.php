@@ -44,6 +44,7 @@ class CommentController extends Controller
     {
         $comment->fill($request->all());
         $comment->save();
+        return redirect('/posts/'.$request->post_id);
     }
 
     /**

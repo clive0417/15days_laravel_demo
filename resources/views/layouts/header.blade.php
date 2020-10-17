@@ -21,18 +21,20 @@
                         <!--mega menu start-->
                         <ul class="menuzord-menu menuzord-right c-nav_s-standard">
                             <!--@php Illuminate\Support\Facades\Log::info(request()->path());@endphp  -->
-                            <li class="@if(request()->is('/')) active @endif"><a href="/">Home</a>
+                            <li class="@if(request()->is('/')) active @endif"><a href="/posts/admin">Posts admin</a>
 
                             </li>
-                            <li class="@if(request()->is('about')) active @endif"><a href="/about">about</a>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+
                             <li class="@if(request()->is('posts')) active @endif"><a href="/posts">blog</a>
 
                             </li>
-                            <li class="@if(request()->is('contact')) active @endif"><a href="/contact">contact</a>
 
-                            </li>
 
 
                         </ul>

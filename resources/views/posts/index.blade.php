@@ -75,12 +75,12 @@
 
 
 
-                    <!--pagination-->
+                    {{-- <!--pagination-->
                     <div class="text-center">
                         {{$posts->links()}}
 
                     </div>
-                    <!--pagination-->
+                    <!--pagination--> --}}
 
                 </div>
                 <div class="col-md-4">

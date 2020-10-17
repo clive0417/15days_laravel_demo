@@ -3,20 +3,20 @@
 
 @section('page_title')
 <section class="page-title">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="text-uppercase">Blog Single</h4>
-                        <ol class="breadcrumb">
-                            <li><a href="/">Home</a>
-                            </li>
-                            <li class="active"><a href="/posts">Blog</a>
-                            </li>
-                            <li class="active">Blog Single</li>
-                        </ol>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-uppercase">Blog Single</h4>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li class="active"><a href="/posts">Blog</a>
+                    </li>
+                    <li class="active">Blog Single</li>
+                </ol>
             </div>
+        </div>
+    </div>
 </section>
 @endsection
 
@@ -30,21 +30,23 @@
                     <div class="blog-classic">
                         <div class="blog-post">
                             <div class="full-width">
-                                    @if (!$post->thumbnail)
-                                        <img src="/assets/img/post/p12.jpg" alt="預設圖片" /><!--預設圖片-->
-                                    @else
-                                        <img src="{{$post->thumbnail}}" alt="thumbnail">
-                                    @endif
+                                @if (!$post->thumbnail)
+                                <img src="/assets/img/post/p12.jpg" alt="預設圖片" />
+                                <!--預設圖片-->
+                                @else
+                                <img src="{{$post->thumbnail}}" alt="thumbnail">
+                                @endif
                             </div>
                             <h4 class="text-uppercase"><a href="blog-single.html">{{$post->title}}</a></h4>
                             <ul class="post-meta">
                                 <li><i class="fa fa-user"></i>posted by <a href="#">{{$post->user->name}}</a>
                                 </li>
                                 @if($post->category)
-                                    <li><i class="fa fa-folder-open"></i>  <a href="/posts/category/{{$post->category_id}}">{{$post->category->name}}</a>
-                                    </li>
+                                <li><i class="fa fa-folder-open"></i> <a
+                                        href="/posts/category/{{$post->category_id}}">{{$post->category->name}}</a>
+                                </li>
                                 @endif
-                                <li><i class="fa fa-comments"></i>  <a href="#">{{$post->comments->count()}} comments</a>
+                                <li><i class="fa fa-comments"></i> <a href="#">{{$post->comments->count()}} comments</a>
                                 </li>
                             </ul>
 
@@ -55,15 +57,15 @@
                             <div class="inline-block">
                                 @if ($post->tags->count()>0)
 
-                                    <div class="widget-tags">
-                                        <h6 class="text-uppercase">Tags </h6>
-                                        @foreach ($post->tags as $key =>$tag)
-                                        <a href="/posts/tag/{{$tag->id}}">{{$tag->name}}</a>
+                                <div class="widget-tags">
+                                    <h6 class="text-uppercase">Tags </h6>
+                                    @foreach ($post->tags as $key =>$tag)
+                                    <a href="/posts/tag/{{$tag->id}}">{{$tag->name}}</a>
 
-                                        @endforeach
+                                    @endforeach
 
-                                    </div>
-                                @endif()
+                                </div>
+                                @endif
                             </div>
 
 
@@ -115,44 +117,51 @@
 
                                 <!-- Comment Item start-->
                                 @foreach ($post->comments as $key =>$comment)
-                                    <li class="media">
+                                <li class="media">
 
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object comment-avatar" src="/assets/img/post/a1.png" alt="" width="50" height="50">
-                                        </a>
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object comment-avatar" src="/assets/img/post/a1.png" alt=""
+                                            width="50" height="50">
+                                    </a>
 
-                                        <div class="media-body">
+                                    <div class="media-body">
 
-                                            <div class="comment-info">
-                                                <div class="comment-author">
-                                                    <a href="#">{{$comment->name}}</a>
-                                                        @if($comment->user && $comment->user->id==Auth::id())
-                                                        <button class="btn btn-default" onclick="toggleCommentForm(event)">edit</button>
-                                                        <button class="btn btn-default"onclick="deleteComment(event)" data-action="/comments/{{$comment->id}}">delete</button>                                                    
-                                                        @endif()
-                                                </div>
-                                                {{$comment->created_at->format('F d, Y G:i')}}
-
+                                        <div class="comment-info">
+                                            <div class="comment-author">
+                                                <a href="#">{{$comment->name}}</a>
+                                                @if($comment->user && $comment->user->id==Auth::id())
+                                                <button class="btn btn-default"
+                                                    onclick="toggleCommentForm(event)">edit</button>
+                                                <button class="btn btn-default" onclick="deleteComment(event)"
+                                                    data-action="/comments/{{$comment->id}}">delete</button>
+                                                @endif()
                                             </div>
-                                            <div class="comment-body">
-                                                
-                                                <p>
-                                                    {{$comment->comment}}
-                                                </p>
-                                                <form name="update-comment"action="/comments/{{$comment->id}}" method="post">
+                                            {{$comment->created_at->format('F d, Y G:i')}}
+
+                                        </div>
+                                        <div class="comment-body">
+
+                                            <p>
+                                                {{$comment->comment}}
+                                            </p>
+                                            <form name="update-comment" action="/comments/{{$comment->id}}"
+                                                method="post">
+
+                                                <input type="hidden" name="_method" value="put">
+                                                @csrf
                                                 <input type="hidden" name="post_id" value="{{$comment->post->id}}">
                                                 <input type="hidden" name="name" value="{{$comment->name}}">
-                                                <input type="text" name="comment"value="{{$comment->comment}}">
+                                                <input type="text" name="comment" value="{{$comment->comment}}">
                                                 <button>update</button>
                                                 <!--改成input submit 也是沒有用 input type="submit" value="update-2">-->
-                                                </form>
-                                            
-                                            </div>
-
+                                            </form>
 
                                         </div>
 
-                                    </li>
+
+                                    </div>
+
+                                </li>
                                 @endforeach
                                 <!-- End Comment Item -->
 
@@ -165,39 +174,42 @@
                             <div class="heading-title-alt text-left heading-border-bottom">
                                 <h4 class="text-uppercase">Leave a Comments</h4>
                             </div>
-                            @if ($errors->any())    
-                                <div class="alert alert-danger">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
                                 <ul>
-                                    @foreach ($errors->all() as $key => $error) 
-                                        <li>{{$error}}</li>
+                                    @foreach ($errors->all() as $key => $error)
+                                    <li>{{$error}}</li>
 
-                                    
+
                                     @endforeach
                                 </ul>
-                                </div>
+                            </div>
                             @endif
 
                             <form method="post" action="/comments" id="form" role="form" class="blog-comments">
                                 @csrf
 
                                 <div class="row">
-                                    <input type="hidden" name="post_id" value="{{$post->id}}"> 
+                                    <input type="hidden" name="post_id" value="{{$post->id}}">
 
                                     <div class="col-md-6 form-group">
                                         <!-- Name -->
                                         @if(Auth::check())
-                                        <input type="text" name="name" id="name" class=" form-control" placeholder="Name *" maxlength="100" value="{{Auth::user()->name}}" >
+                                        <input type="text" name="name" id="name" class=" form-control"
+                                            placeholder="Name *" maxlength="100" value="{{Auth::user()->name}}">
                                         @else
-                                        <input type="text" name="name" id="name" class=" form-control" placeholder="Name *" maxlength="100"  >
+                                        <input type="text" name="name" id="name" class=" form-control"
+                                            placeholder="Name *" maxlength="100">
                                         @endif
                                     </div>
 
-                                        <!-- Comment -->
+                                    <!-- Comment -->
                                     <div class="form-group col-md-12">
-                                        <textarea name="comment" id="text" class=" form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                                        <textarea name="comment" id="text" class=" form-control" rows="6"
+                                            placeholder="Comment" maxlength="400"></textarea>
                                     </div>
 
-                                        <!-- Send Button -->
+                                    <!-- Send Button -->
                                     <div class="form-group col-md-12">
                                         <button type="submit" class="btn btn-small btn-dark-solid ">
                                             Send comment
@@ -219,7 +231,7 @@
 
                 </div>
                 <div class="col-md-4">
-                     @include('posts._sidebar')
+                    @include('posts._sidebar')
 
 
 
@@ -228,7 +240,4 @@
             </div>
         </div>
     </div>
-</section
-
-@endsection
-            
+</section @endsection

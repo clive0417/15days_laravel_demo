@@ -8,7 +8,7 @@
     <!--favicon icon-->
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
-    <title>General 1</title>
+    <title>Blog</title>
 
     <!--common style-->
     <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
