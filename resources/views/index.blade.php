@@ -2,10 +2,7 @@
 @extends('layouts.frontend',['overlay'=>true])
 
 @section('hero')
-<div class="alert alert-info " role="alert">
-    測試帳號[root管理者] shou@shou.com<br>
-    測試密碼[root管理者] shoushoushou<br>
-</div>
+
 <div class="banner-state vertical-align text-center banner-13">
     <div class="container-mid">
         <div class="container">
