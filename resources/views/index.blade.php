@@ -16,7 +16,8 @@
 
             </div>
             <div class="alert alert-info " role="alert">
-                請以測試帳號登入測試，或暗register 註冊帳號測試
+                請以測試帳號登入測試，或按register 註冊帳號測試 <br>
+                揭示小寫<br>
                 測試帳號[root管理者] shou@shou.com<br>
                 測試密碼[root管理者] shoushoushou<br>
             </div>
